@@ -1,73 +1,89 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:
+    'Poppins',
+    system-ui,
+    -apple-system,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --auth-container-width: 750px;
+  --auth-container-height: 550px;
+  --auth-form-max-width: 350px;
+
+  --background: oklch(0.98 0.005 240);
+  --foreground: oklch(0.2 0.01 240);
+
+  --primary: oklch(0.585 0.233 257.43);
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.769 0.188 70.08);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --accent: oklch(0.85 0.1 190);
+  --accent-foreground: oklch(0.2 0.05 190);
+
+  --success: oklch(0.88 0.1 165);
+  --destructive: oklch(0.6 0.2 25);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.01 240);
+  --border: oklch(0.9 0.01 240);
+  --input: oklch(0.95 0.01 240);
+  --ring: oklch(0.585 0.233 257.43);
+
+  --radius: 0.625rem;
+  --radius-card: 1.25rem;
+  --radius-auth: 2rem;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.dark {
+  --background: oklch(0.15 0.02 240);
+  --foreground: oklch(0.95 0.01 240);
+  --card: oklch(0.2 0.02 240);
+  --border: oklch(0.3 0.02 240);
+  --primary: oklch(0.65 0.2 250);
+  --ring: oklch(0.65 0.2 250);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+@theme inline {
+  --font-sans: 'Poppins', ui-sans-serif, system-ui;
+
+  --max-width-auth-container: var(--auth-container-width);
+  --max-width-auth-form: var(--auth-form-max-width);
+  --height-auth-container: var(--auth-container-height);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-auth: var(--radius-auth);
+  --radius-card: var(--radius-card);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  body {
+    @apply bg-background text-foreground font-sans transition-colors duration-300;
   }
 }
