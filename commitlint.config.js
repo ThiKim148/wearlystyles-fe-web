@@ -5,17 +5,17 @@ export default {
       rules: {
         'jira-key-in-scope': (parsed) => {
           const { scope } = parsed;
-          const jiraRegex = /^WEARLYSTYLE-\d+$/;
+          const jiraRegex = /^-V-FE-\d+$/;
           if (!scope) {
             return [
               false,
-              'Commit must have Jira Key in scope (VD: feat(WEARLYSTYLE-123): ...)',
+              'Commit must have Jira Key in scope (VD: feat(V-FE-123): ...)',
             ];
           }
           if (!jiraRegex.test(scope)) {
             return [
               false,
-              `Scope "${scope}" is invalid format. There must be a Jira Key (VD: WEARLYSTYLE-123)`,
+              `Scope "${scope}" is invalid format. There must be a Jira Key (VD: V-FE-123)`,
             ];
           }
 
